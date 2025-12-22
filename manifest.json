@@ -1,7 +1,7 @@
 {
-  "name": "Radio Fusion Austral",
-  "short_name": "Fusion Austral",
-  "description": "Desde la Patagonia al Mundo",
+  "name": "Radio Clasica FM",
+  "short_name": "Clasica FM",
+  "description": "Un mundo de Clasicos",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

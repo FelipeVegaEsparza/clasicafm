@@ -942,11 +942,22 @@ class RadioPulse {
     
     document.getElementById('footer-listeners').textContent = songData.listeners || '0';
     
-    if (songData.art) {
-      const playerArtwork = document.getElementById('player-artwork');
+    // Manejar la imagen del artwork
+    const playerArtwork = document.getElementById('player-artwork');
+    const defaultArtwork = document.querySelector('.default-artwork');
+    
+    if (songData.art && playerArtwork) {
+      playerArtwork.src = songData.art;
+      playerArtwork.style.display = 'block';
+      if (defaultArtwork) {
+        defaultArtwork.style.display = 'none';
+      }
+    } else {
       if (playerArtwork) {
-        playerArtwork.src = songData.art;
-        playerArtwork.style.display = 'block';
+        playerArtwork.style.display = 'none';
+      }
+      if (defaultArtwork) {
+        defaultArtwork.style.display = 'flex';
       }
     }
   }

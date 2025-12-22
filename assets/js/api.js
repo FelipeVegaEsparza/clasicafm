@@ -98,7 +98,7 @@ export async function getSonicPanelInfo() {
   // Extraer el puerto del stream URL
   const streamUrl = configData.sonicpanel_stream_url;
   const portMatch = streamUrl.match(/:(\d+)/);
-  const port = portMatch ? portMatch[1] : '8018';
+  const port = portMatch ? portMatch[1] : '8066';
   
   // Construir la URL de la API de SonicPanel
   const apiUrl = `https://stream.ipstream.cl/cp/get_info.php?p=${port}`;
@@ -119,8 +119,24 @@ export async function getSonicPanelInfo() {
 export async function getCurrentSong() {
   try {
     const data = await getSonicPanelInfo();
+    
+    // Separar artista y título del campo title
+    let title = 'Sin información';
+    let artist = 'En Vivo';
+    
+    if (data.title) {
+      const parts = data.title.split(' - ');
+      if (parts.length >= 2) {
+        artist = parts[0].trim();
+        title = parts.slice(1).join(' - ').trim();
+      } else {
+        title = data.title.trim();
+      }
+    }
+    
     return {
-      title: data.title || 'Sin información',
+      title: title,
+      artist: artist,
       art: data.art || null,
       listeners: data.listeners || 0,
       uniqueListeners: data.ulistener || 0,
@@ -133,6 +149,7 @@ export async function getCurrentSong() {
     console.error('Error getting current song:', error);
     return {
       title: 'Radio en Vivo',
+      artist: 'En Vivo',
       art: null,
       listeners: 0,
       uniqueListeners: 0,

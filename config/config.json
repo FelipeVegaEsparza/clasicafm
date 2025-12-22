@@ -1,10 +1,10 @@
 {
-  "template": "template5",
-  "project_name": "Radio Fusion Austral",
-  "clientId": "cmf4du07u000313x255b7jy2t",
+  "template": "template6",
+  "project_name": "Radio Clasica FM",
+  "clientId": "cmjhhupnu000812wuo96n7nvi",
   "ipstream_base_url": "https://dashboard.ipstream.cl/api/public",
-  "sonicpanel_stream_url": "https://stream.ipstream.cl/8018/stream",
-  "sonicpanel_api_url": "https://stream.ipstream.cl/cp/get_info.php?p=8018",
+  "sonicpanel_stream_url": "https://stream.ipstream.cl/8066/stream",
+  "sonicpanel_api_url": "https://stream.ipstream.cl/cp/get_info.php?p=8066",
   "cache_version": "v1",
   "offline_page": "/offline.html",
   "pagination": {

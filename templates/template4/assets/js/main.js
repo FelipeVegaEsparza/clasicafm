@@ -490,19 +490,15 @@ class NewsHub {
     
     programs.forEach(program => {
       // Si el programa tiene días específicos, usarlos
-      if (program.days && Array.isArray(program.days)) {
+      if (program.days && Array.isArray(program.days) && program.days.length > 0) {
         program.days.forEach(day => {
           const dayKey = this.normalizeDayName(day);
           if (programsByDay[dayKey]) {
             programsByDay[dayKey].push(program);
           }
         });
-      } else {
-        // Si no tiene días específicos, agregarlo a todos los días de lunes a viernes
-        ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'].forEach(day => {
-          programsByDay[day].push(program);
-        });
       }
+      // Si no tiene días especificados, no se agrega a ningún día
     });
     
     // Ordenar programas por hora de inicio

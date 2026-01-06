@@ -523,18 +523,15 @@ class RadioPulse {
     };
     
     programs.forEach(program => {
-      if (program.days && Array.isArray(program.days)) {
+      if (program.days && Array.isArray(program.days) && program.days.length > 0) {
         program.days.forEach(day => {
           const dayKey = this.normalizeDayName(day);
           if (programsByDay[dayKey]) {
             programsByDay[dayKey].push(program);
           }
         });
-      } else {
-        ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'].forEach(day => {
-          programsByDay[day].push(program);
-        });
       }
+      // Si no tiene días especificados, no se agrega a ningún día
     });
     
     Object.keys(programsByDay).forEach(day => {
